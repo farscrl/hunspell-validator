@@ -60,12 +60,12 @@
         <div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4">
           <h2 class="text-xl font-semibold text-white">Affix Rules (.aff)</h2>
         </div>
-        <div class="flex-1 p-4 overflow-y-auto">
-          <textarea
+        <div class="flex-1 overflow-hidden pt-4 pr-4">
+          <ngx-monaco-editor
             [(ngModel)]="affContent"
-            placeholder="Paste your .aff file content here..."
-            class="w-full h-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-          ></textarea>
+            [options]="affEditorOptions"
+            class="h-full w-full"
+          ></ngx-monaco-editor>
         </div>
         <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-sm text-gray-600">
           {{ getLineCount(affContent) }} lines
@@ -77,12 +77,12 @@
         <div class="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4">
           <h2 class="text-xl font-semibold text-white">Dictionary (.dic)</h2>
         </div>
-        <div class="flex-1 p-4 overflow-y-auto">
-          <textarea
+        <div class="flex-1 overflow-hidden pt-4 pr-4">
+          <ngx-monaco-editor
             [(ngModel)]="dicContent"
-            placeholder="Paste your .dic file content here..."
-            class="w-full h-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
-          ></textarea>
+            [options]="dicEditorOptions"
+            class="h-full w-full"
+          ></ngx-monaco-editor>
         </div>
         <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-sm text-gray-600">
           {{ getLineCount(dicContent) }} lines
@@ -94,12 +94,12 @@
         <div class="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4">
           <h2 class="text-xl font-semibold text-white">Text to Validate</h2>
         </div>
-        <div class="flex-1 p-4 overflow-y-auto">
-          <textarea
+        <div class="flex-1 overflow-hidden pt-4 pr-4">
+          <ngx-monaco-editor
             [(ngModel)]="textToValidate"
-            placeholder="Enter text to validate..."
-            class="w-full h-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
-          ></textarea>
+            [options]="textEditorOptions"
+            class="h-full w-full"
+          ></ngx-monaco-editor>
         </div>
         <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-sm text-gray-600">
           {{ textToValidate.length }} characters

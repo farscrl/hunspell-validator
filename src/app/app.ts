@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { EditorComponent } from 'ngx-monaco-editor-v2';
 import { HunspellLoaderService } from './services/hunspell-loader.service';
 
 interface Language {
@@ -9,7 +10,7 @@ interface Language {
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [FormsModule, EditorComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -31,6 +32,31 @@ export class App {
   protected selectedLanguage = '';
   protected isLoading = false;
   protected showLanguageSelector = false;
+
+  protected editorOptions = {
+    theme: 'vs-light',
+    language: 'text',
+    automaticLayout: false,
+    minimap: { enabled: false },
+    lineNumbers: 'on',
+    folding: true,
+    scrollBeyondLastLine: false
+  };
+
+  protected affEditorOptions = {
+    ...this.editorOptions,
+    readOnly: true
+  };
+
+  protected dicEditorOptions = {
+    ...this.editorOptions,
+    readOnly: true
+  };
+
+  protected textEditorOptions = {
+    ...this.editorOptions,
+    readOnly: false
+  };
 
   private hunspellLoader = inject(HunspellLoaderService);
 
