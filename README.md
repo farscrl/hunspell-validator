@@ -1,59 +1,121 @@
-# HunspellValidator
+# Hunspell Validator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+A web-based spell checker validator for Hunspell dictionaries and affix rules. Test and validate Hunspell dictionary files (.dic) and affix rule files (.aff) with real-time spell checking. Currently supports multiple languages via the Pledari Grond API, with plans to integrate additional language package sources.
 
-## Development server
+**Live App**: https://farscrl.github.io/hunspell-validator/
 
-To start a local development server, run:
+## Features
 
+- **Three-Column Editor Layout**
+  - Left: Affix rules (.aff) editor - view and edit Hunspell affix rules
+  - Center: Dictionary (.dic) editor - view and edit Hunspell dictionary entries
+  - Right: Rich text editor with integrated spell checking
+
+- **Language Presets**
+  - One-click language loading from configurable sources
+  - Currently supports multiple language variants via Pledari Grond API
+  - Extensible architecture for adding additional language package sources
+
+- **Real-Time Spell Checking**
+  - Live spell checking with red underlines for misspelled words
+  - Smart suggestions popup on misspelled words
+  - Automatic spell checker rebuild when rules or dictionary change (with debouncing)
+  - Loading indicator during spell checker initialization
+
+- No server-side spell checking - all processing happens in the browser
+
+## Technology Stack
+
+- **Frontend Framework**: Angular 20 (standalone components)
+- **Text Editors**:
+  - Monaco Editor (ngx-monaco-editor-v2) for rules and dictionary
+  - Tiptap Editor for rich text with spell checking
+- **Spell Checking**:
+  - hunspell-asm (WebAssembly-based Hunspell)
+  - @farscrl/tiptap-extension-spellchecker
+- **Styling**: Tailwind CSS v4
+- **Package Manager**: pnpm
+- **CI/CD**: GitHub Actions with deployment to GitHub Pages
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 22 or higher
+- pnpm 10 or higher
+
+### Installation
+
+1. Clone the repository:
 ```bash
-ng serve
+git clone <repository-url>
+cd hunspell-validator
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+2. Install dependencies:
 ```bash
-ng generate component component-name
+pnpm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Development Server
 
+Start the development server:
 ```bash
-ng generate --help
+pnpm start
 ```
 
-## Building
+Navigate to `http://localhost:4200/`. The application will automatically reload when you modify source files.
 
-To build the project run:
+### Building
 
+Build the project for production:
 ```bash
-ng build
+pnpm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## How It Works
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. **Load a Language**: Click "Load Language Preset" and select a language to load pre-configured dictionary and affix files.
 
-```bash
-ng test
+2. **Edit Rules and Dictionary**:
+   - Modify the .aff file (left) to change spelling rules
+   - Modify the .dic file (center) to change dictionary entries
+   - Changes are automatically debounced and trigger spell checker rebuild
+
+3. **Spell Check**: Type or paste text in the right editor to see real-time spell checking results. Words not found in the dictionary will be underlined in red.
+
+4. **Get Suggestions**: Click on misspelled words to see suggestions from the spell checker.
+
+## Language Package Sources
+
+### Current Source: Pledari Grond
+
+The application currently loads language files from the **Pledari Grond** spell checker API. The architecture is designed to be extensible for adding additional language package sources in the future.
+
+
+## Deployment
+
+The project is automatically deployed to GitHub Pages when you push to the `main` branch. The deployment is handled by GitHub Actions (see `.github/workflows/deploy.yml`).
+
+The application is available at:
+```
+https://farscrl.github.io/hunspell-validator/
 ```
 
-## Running end-to-end tests
+## Browser Support
 
-For end-to-end (e2e) testing, run:
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
 
-```bash
-ng e2e
-```
+Modern browsers with WebAssembly support are required.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Acknowledgments
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Built with [Angular](https://angular.io)
+- Spell checking via [Hunspell](https://hunspell.github.io/) and [hunspell-asm](https://github.com/farscrl/hunspell-asm)
+- Editor components from [Monaco Editor](https://microsoft.github.io/monaco-editor/) and [Tiptap](https://tiptap.dev)
+- Language data from [Pledari Grond](https://www.pledarigrond.ch/)
+- Styling with [Tailwind CSS](https://tailwindcss.com)
