@@ -51,40 +51,20 @@
     <!-- Three Column Layout -->
     <div class="grid grid-cols-3 gap-6 flex-1 min-h-0">
       <!-- Left Column: .aff File -->
-      <div class="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden">
-        <div class="bg-gray-300 px-6 py-3 border-b border-gray-400">
-          <h2 class="text-lg font-semibold text-gray-800">Affix Rules (.aff)</h2>
-        </div>
-        <div class="flex-1 overflow-hidden pt-4 pr-4">
-          <ngx-monaco-editor
-            [ngModel]="affContent"
-            (ngModelChange)="onAffContentChange($event)"
-            [options]="affEditorOptions"
-            class="h-full w-full"
-          ></ngx-monaco-editor>
-        </div>
-        <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-sm text-gray-600">
-          {{ getLineCount(affContent) }} lines
-        </div>
-      </div>
+      <app-monaco-editor
+        [content]="affContent"
+        (contentChange)="onAffContentChange($event)"
+        [editorOptions]="affEditorOptions"
+        title="Affix Rules (.aff)"
+      ></app-monaco-editor>
 
       <!-- Center Column: .dic File -->
-      <div class="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden">
-        <div class="bg-gray-300 px-6 py-3 border-b border-gray-400">
-          <h2 class="text-lg font-semibold text-gray-800">Dictionary (.dic)</h2>
-        </div>
-        <div class="flex-1 overflow-hidden pt-4 pr-4">
-          <ngx-monaco-editor
-            [ngModel]="dicContent"
-            (ngModelChange)="onDicContentChange($event)"
-            [options]="dicEditorOptions"
-            class="h-full w-full"
-          ></ngx-monaco-editor>
-        </div>
-        <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-sm text-gray-600">
-          {{ getLineCount(dicContent) }} lines
-        </div>
-      </div>
+      <app-monaco-editor
+        [content]="dicContent"
+        (contentChange)="onDicContentChange($event)"
+        [editorOptions]="dicEditorOptions"
+        title="Dictionary (.dic)"
+      ></app-monaco-editor>
 
       <!-- Right Column: Text to Validate with Tiptap -->
       <div class="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden">

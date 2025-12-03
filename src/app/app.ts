@@ -1,6 +1,6 @@
 import { Component, inject, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { EditorComponent } from 'ngx-monaco-editor-v2';
+import { MonacoEditor } from './components/monaco-editor/monaco-editor';
 import { TiptapEditorComponent } from './components/tiptap-editor/tiptap-editor';
 import { HunspellLoaderService } from './services/hunspell-loader.service';
 import { SpellcheckerService } from './services/spellchecker.service';
@@ -16,7 +16,7 @@ interface Language {
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, EditorComponent, TiptapEditorComponent],
+  imports: [FormsModule, MonacoEditor, TiptapEditorComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

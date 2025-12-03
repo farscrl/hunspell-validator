@@ -1,0 +1,16 @@
+<div class="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden h-full">
+  <div class="bg-gray-300 px-6 py-3 border-b border-gray-400">
+    <h2 class="text-lg font-semibold text-gray-800">{{ title }}</h2>
+  </div>
+  <div class="flex-1 overflow-hidden pt-4 pr-4">
+    <ngx-monaco-editor
+      [ngModel]="content"
+      (ngModelChange)="onContentChange($event)"
+      [options]="editorOptions"
+      class="h-full w-full"
+    ></ngx-monaco-editor>
+  </div>
+  <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-sm text-gray-600">
+    {{ getLineCount(content) }} lines
+  </div>
+</div>
