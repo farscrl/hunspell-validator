@@ -112,6 +112,10 @@ https://farscrl.github.io/hunspell-validator/
 
 Modern browsers with WebAssembly support are required.
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+
 ## Acknowledgments
 
 - Built with [Angular](https://angular.io)
