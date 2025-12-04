@@ -12,8 +12,8 @@
         (click)="toggleLanguageSelector()"
         class="w-full px-6 py-4 bg-white hover:bg-gray-50 transition-colors duration-200 flex items-center gap-2 text-gray-700 font-semibold text-left"
       >
-        <span>{{ showLanguageSelector ? '▼' : '▶' }}</span>
-        <span>Load Language Preset</span>
+        <span class=" cursor-pointer">{{ showLanguageSelector ? '▼' : '▶' }}</span>
+        <span class=" cursor-pointer">Load Language Preset</span>
       </button>
 
       @if (showLanguageSelector) {
