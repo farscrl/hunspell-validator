@@ -5,6 +5,7 @@ import { TiptapEditorComponent } from './components/tiptap-editor/tiptap-editor'
 import { HunspellLoaderService } from './services/hunspell-loader.service';
 import { SpellcheckerService } from './services/spellchecker.service';
 import { AffSyntaxService } from './services/aff-syntax.service';
+import { DicSyntaxService } from './services/dic-syntax.service';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
@@ -65,6 +66,8 @@ export class App implements OnDestroy {
 
   protected dicEditorOptions = {
     ...this.editorOptions,
+    language: 'dic',
+    theme: 'vs-light-dic'
   };
 
   @ViewChild(TiptapEditorComponent) tiptapEditor?: TiptapEditorComponent;
@@ -73,9 +76,11 @@ export class App implements OnDestroy {
   private spellchecker = inject(SpellcheckerService);
   private cdr = inject(ChangeDetectorRef);
   private affSyntax = inject(AffSyntaxService);
+  private dicSyntax = inject(DicSyntaxService);
 
   constructor() {
     this.affSyntax.registerAffLanguage();
+    this.dicSyntax.registerDicLanguage();
 
     // Set up debounced spell checker rebuilding when aff content changes
     this.affContentSubject
