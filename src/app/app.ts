@@ -4,6 +4,7 @@ import { MonacoEditor } from './components/monaco-editor/monaco-editor';
 import { TiptapEditorComponent } from './components/tiptap-editor/tiptap-editor';
 import { HunspellLoaderService } from './services/hunspell-loader.service';
 import { SpellcheckerService } from './services/spellchecker.service';
+import { AffSyntaxService } from './services/aff-syntax.service';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
@@ -58,6 +59,8 @@ export class App implements OnDestroy {
 
   protected affEditorOptions = {
     ...this.editorOptions,
+    language: 'aff',
+    theme: 'vs-light-aff'
   };
 
   protected dicEditorOptions = {
@@ -69,8 +72,11 @@ export class App implements OnDestroy {
   private hunspellLoader = inject(HunspellLoaderService);
   private spellchecker = inject(SpellcheckerService);
   private cdr = inject(ChangeDetectorRef);
+  private affSyntax = inject(AffSyntaxService);
 
   constructor() {
+    this.affSyntax.registerAffLanguage();
+
     // Set up debounced spell checker rebuilding when aff content changes
     this.affContentSubject
       .pipe(
